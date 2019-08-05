@@ -1,0 +1,14 @@
+#header {
+    height: 80px;
+    width: 100%;
+    box-shadow: 0px 8px 10px -10px #444;
+    background-color: #FFF;
+    display: grid;
+    grid-template-columns: auto auto 200px;
+
+    img {
+        width: 150px;
+        align-self: center;
+        margin-left: 30px;
+    }
+}

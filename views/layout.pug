@@ -1,0 +1,37 @@
+doctype html
+
+html
+
+  head
+
+    //- Page Title
+    title= title
+
+    //- Stylesheets
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/fonts.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/header.css')
+    link(rel='stylesheet', href='/stylesheets/sidebar.css')
+
+    //- Additional Stylesheets
+    block stylesheets
+
+    //- Scripts
+    script(src="javascripts/jquery.min.js" defer)
+
+    //- Additional Scripts
+    block scripts
+
+  body
+
+    //- Header
+    include header.pug
+
+    #container
+
+      //- Core Content
+      block content
+
+
+

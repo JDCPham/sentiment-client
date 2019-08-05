@@ -1,0 +1,73 @@
+#currencyMenu {
+  margin: auto;
+  margin-top: 100px;
+  width: 80%;
+  height: 40px;
+  border-radius: 5px;
+  background-color: #FFF;
+  box-shadow: 0px 5px 10px -5px #444;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); }
+  #currencyMenu .currency {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0;
+    margin: 0; }
+    #currencyMenu .currency img {
+      height: 25px;
+      width: 25px; }
+    #currencyMenu .currency:hover {
+      cursor: pointer;
+      background-color: #EEE; }
+      #currencyMenu .currency:hover:first-child {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px; }
+      #currencyMenu .currency:hover:last-child {
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border: none; }
+
+#dataContainer {
+  width: 80%;
+  margin: auto;
+  margin-top: 50px;
+  border-radius: 5px;
+  background-color: #FFF;
+  box-shadow: 0px 5px 14px -5px #444;
+  display: grid;
+  grid-template-columns: 180px 1fr 1fr; }
+  #dataContainer #currency {
+    width: 100%;
+    min-height: 300px;
+    display: grid;
+    border-right: 1px solid #EEE;
+    justify-items: center;
+    align-items: center; }
+    #dataContainer #currency img {
+      width: 90px; }
+  #dataContainer #sentimentCategory {
+    width: 100%;
+    display: grid;
+    border-right: 1px solid #EEE;
+    justify-items: center;
+    align-items: center; }
+    #dataContainer #sentimentCategory p {
+      padding: 0;
+      margin: 0;
+      font-size: 42px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #888;
+      font-family: SanFrancisco-Bold; }
+  #dataContainer #sentimentGraph {
+    width: 100%;
+    height: 350px;
+    display: grid;
+    justify-items: center;
+    align-items: center; }
+
+/*# sourceMappingURL=index.css.map */
