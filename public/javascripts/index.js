@@ -11,6 +11,7 @@ $(document).ready(function() {
         sentimentRaw = 0.2;
         currency = "btc";
         updateCustom(callback);
+        $(".odometer").text(37);
     });
 
     $('.eth').click(function() {
