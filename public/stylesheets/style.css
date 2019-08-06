@@ -6,7 +6,8 @@ body {
   padding: 0;
   background-color: #FFF;
   background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
-  background-attachment: fixed; }
+  background-attachment: fixed;
+  margin-bottom: 50px; }
 
 #container {
   width: 100%;
