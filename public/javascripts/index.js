@@ -94,10 +94,10 @@ function updateGraphics(cb) {
 var options = {
    type:"gauge",
    globals:{
-      fontSize:12
+      fontSize:10
    },
    plotarea:{
-      marginTop:80
+      marginTop:40
    },
    plot:{
       size:'100%',
@@ -176,7 +176,7 @@ var options = {
 zingchart.render({ 
     id : 'sentimentGraph', 
     data : options,
-    height: 380
+    height: 350
 });
 
 /* Data update */
