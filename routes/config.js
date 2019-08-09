@@ -40,10 +40,24 @@ function MalcolmDataOptions(token) {
 
 }
 
+
+function ScoreOptions(currency) {
+
+    return {
+        method          :   "GET",
+        url             :   "https://50a8o5d11d.execute-api.us-east-2.amazonaws.com/prod/" + currency,
+        headers         :   { "x-api-key" : "JOBQ4mGwIB8w53McI0MeU3ouWTotdQ4R6ViMwFLw" }
+    }
+
+}
+
+
+
 module.exports = {
 
     AuthOptions: MalcolmAuthenticationOptions,
-    SentimentOptions: MalcolmDataOptions
+    SentimentOptions: MalcolmDataOptions,
+    ScoreOptions: ScoreOptions
 
 }
 

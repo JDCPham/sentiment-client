@@ -8,18 +8,18 @@ var callback;
 
 /* Currency Data */
 var btcRaw = getBTCSentiment();
-var ethRaw;
-var xrpRaw;
-var ltcRaw;
-var bchRaw;
-var eosRaw;
+var ethRaw = getETHSentiment();
+var xrpRaw = getXRPSentiment();
+var ltcRaw = getLTCSentiment();
+var bchRaw = getBCHSentiment();
+var eosRaw = getEOSSentiment();
 
 /* Elements */
-var iconElement = $("#currency > img");
-var categoryElement = $("#sentimentCategory > p");
-var fadeElements = $("#currency > img, #sentimentCategory > p, #indicator, #rawSentiment > p");
-var indicatorElement = $("#indicator");
-var sentimentScoreElement = $("#rawSentiment > p");
+var iconElement            =  $("#currency > img");
+var categoryElement        =  $("#sentimentCategory > p");
+var fadeElements           =  $("#currency > img, #sentimentCategory > p, #indicator, #rawSentiment > p");
+var indicatorElement       =  $("#indicator");
+var sentimentScoreElement  =  $("#rawSentiment > p");
 
 /* Document Ready */
 $(document).ready(function() {
@@ -28,6 +28,15 @@ $(document).ready(function() {
       indicatorElement.fadeOut(1000);
       indicatorElement.fadeIn(300);
    }, 1300);
+
+   setInterval(function() {
+      btcRaw = getBTCSentiment();
+      ethRaw = getETHSentiment();
+      xrpRaw = getXRPSentiment();
+      ltcRaw = getLTCSentiment();
+      bchRaw = getBCHSentiment();
+      eosRaw = getEOSSentiment();
+   }, 60000)
 
    /* Click Event Handlers */
    $('.btc').click(function() {
@@ -38,35 +47,35 @@ $(document).ready(function() {
    });
 
    $('.eth').click(function() {
-      sentimentRaw = 1;
+      sentimentRaw = ethRaw;
       currency = "eth";
       updateData(sentimentRaw, currency);
       updateGraphics(callback);
    });
 
    $('.xrp').click(function() {
-      sentimentRaw = -0.3;
+      sentimentRaw = xrpRaw;
       currency = "xrp";
       updateData(sentimentRaw, currency);
       updateGraphics(callback);
    });
 
    $('.ltc').click(function() {
-      sentimentRaw = 0;
+      sentimentRaw = ltcRaw;
       currency = "ltc";
       updateData(sentimentRaw, currency);
       updateGraphics(callback);
    });
 
    $('.bch').click(function() {
-      sentimentRaw = -0.2553;
+      sentimentRaw = bchRaw;
       currency = "bch";
       updateData(sentimentRaw, currency);
       updateGraphics(callback);
    });
 
    $('.eos').click(function() {
-      sentimentRaw = -0.7;
+      sentimentRaw = eosRaw;
       currency = "eos";
       updateData(sentimentRaw, currency);
       updateGraphics(callback);
@@ -205,6 +214,10 @@ function setIcon(currency) {
    else icon = "images/eos.svg";
 }
 
+function round(data) {
+   return parseFloat(data).toFixed(4);
+}
+
 
 /* Graphics Update */
 function updateIcon() { 
@@ -216,7 +229,7 @@ function updateCategory() {
    indicatorElement.css("background-color", colour);
 }
 function updateSentiment() { 
-   sentimentScoreElement.text(sentimentRaw);
+   sentimentScoreElement.text(round(sentimentRaw));
    sentimentScoreElement.css("color", colour);
 }
 function updateGraph(cb) {
@@ -230,10 +243,12 @@ function update(cb) {
 }
 
 /* Sentiment Data */
-function getBTCSentiment() {
-   axios.get('/sentiment/btc')
-   .then(res => btcRaw = res.data.latestSentiment);
-}
+function getBTCSentiment() { axios.get('/sentiment/btc').then(res => btcRaw = res.data.sentiment); }
+function getETHSentiment() { axios.get('/sentiment/eth').then(res => ethRaw = res.data.sentiment); }
+function getBCHSentiment() { axios.get('/sentiment/bch').then(res => bchRaw = res.data.sentiment); }
+function getEOSSentiment() { axios.get('/sentiment/eos').then(res => eosRaw = res.data.sentiment); }
+function getLTCSentiment() { axios.get('/sentiment/ltc').then(res => ltcRaw = res.data.sentiment); }
+function getXRPSentiment() { axios.get('/sentiment/xrp').then(res => xrpRaw = res.data.sentiment); }
 
 
 

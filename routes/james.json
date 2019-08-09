@@ -1,7 +1,0 @@
-{
-	"method": "GET",
-	"url": "https://nc0sstu5vj.execute-api.us-east-2.amazonaws.com/prod/ssitradestrat/",
-	"headers": {
-		"Authorization": ""
-	}
-}
