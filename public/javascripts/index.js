@@ -1,6 +1,7 @@
 /* Current Data */
-var sentimentRaw = 0.343;
+var raw;
 var sentimentCategory = "Positive";
+var time;
 var currency = "btc";
 var colour = "#444";
 var icon;
@@ -17,12 +18,19 @@ var eosRaw = getEOSSentiment();
 /* Elements */
 var iconElement            =  $("#currency > img");
 var categoryElement        =  $("#sentimentCategory > p");
-var fadeElements           =  $("#currency > img, #sentimentCategory > p, #indicator, #rawSentiment > p");
+var fadeElements           =  $("#currency > img, #sentimentCategory > p, #indicator, #rawSentiment > p, #meta > p");
 var indicatorElement       =  $("#indicator");
 var sentimentScoreElement  =  $("#rawSentiment > p");
+var timeElement            =  $("#meta > p");
 
 /* Document Ready */
 $(document).ready(function() {
+
+   zingchart.render({ 
+      id : 'sentimentGraph', 
+      data : options,
+      height: 350
+   });
 
    setInterval(function() {
       indicatorElement.fadeOut(1000);
@@ -40,54 +48,55 @@ $(document).ready(function() {
 
    /* Click Event Handlers */
    $('.btc').click(function() {
-      sentimentRaw = btcRaw;
+      raw = btcRaw;
       currency = "btc";
-      updateData(sentimentRaw, currency);
+      updateData(raw.sentiment, currency, raw.date);
       updateGraphics(callback);
    });
 
    $('.eth').click(function() {
-      sentimentRaw = ethRaw;
+      raw = ethRaw;
       currency = "eth";
-      updateData(sentimentRaw, currency);
+      updateData(raw.sentiment, currency, raw.date);
       updateGraphics(callback);
    });
 
    $('.xrp').click(function() {
-      sentimentRaw = xrpRaw;
+      raw = xrpRaw;
       currency = "xrp";
-      updateData(sentimentRaw, currency);
+      updateData(raw.sentiment, currency, raw.date);
       updateGraphics(callback);
    });
 
    $('.ltc').click(function() {
-      sentimentRaw = ltcRaw;
+      raw = ltcRaw;
       currency = "ltc";
-      updateData(sentimentRaw, currency);
+      updateData(raw.sentiment, currency, raw.date);
       updateGraphics(callback);
    });
 
    $('.bch').click(function() {
-      sentimentRaw = bchRaw;
+      raw = bchRaw;
       currency = "bch";
-      updateData(sentimentRaw, currency);
+      updateData(raw.sentiment, currency, raw.date);
       updateGraphics(callback);
    });
 
    $('.eos').click(function() {
-      sentimentRaw = eosRaw;
+      raw = eosRaw;
       currency = "eos";
-      updateData(sentimentRaw, currency);
+      updateData(raw.sentiment, currency, raw.date);
       updateGraphics(callback);
    });
 
 });
 
 
-function updateData(raw, currency) {
+function updateData(raw, currency, date) {
    setCategory(raw);
    setColour(raw);
    setIcon(currency);
+   setTime(date);
 }
 
 function updateGraphics(cb) {
@@ -95,98 +104,12 @@ function updateGraphics(cb) {
       updateIcon();
       updateCategory();
       updateSentiment();
+      updateTime();
       fadeElements.fadeIn(200);
    });
    updateGraph(cb);
 }
 
-var options = {
-   type:"gauge",
-   globals:{
-      fontSize:10
-   },
-   plotarea:{
-      marginTop:40
-   },
-   plot:{
-      size:'100%',
-
-   },
-   tooltip:{
-      borderRadius:0
-   },
-   scaleR:{
-      aperture:180,
-      minValue:-1,
-      maxValue:1,
-      step:0.1,
-      center:{
-         visible:false
-      },
-      tick:{
-         visible:false
-      },
-      item:{
-         offsetR:0,
-         angle:"auto"
-      },
-      labels:[
-         '-1'
-      ],
-      ring:{
-         size:15,
-         rules:[
-            {
-               rule:'%v >= -1 && %v < -0.6',
-               backgroundColor:'#e32d2d'
-            },
-            {
-               rule:'%v >= -0.6 && %v < -0.2',
-               backgroundColor:'#e3702d'
-            },
-            {
-               rule:'%v >= -0.2 && %v < 0.2',
-               backgroundColor:'#edea53'
-            },
-            {
-               rule:'%v >= 0.2 && %v < 0.6',
-               backgroundColor:'#87c949'
-            },
-            {
-               rule:'%v >= 0.6 && %v < 1.0',
-               backgroundColor:'#28992b'
-            }
-         ]
-      }
-   },
-   refresh:{  
-       type:"feed",
-       transport:"js",
-       url:"update()",
-       interval: 1000
-   },
-   series:[
-      {
-         values:[],
-         backgroundColor:'black',
-         csize:"8%",
-         size:"100%",
-         animation:{
-            effect:2,
-            method:5,
-            sequence:2,
-            speed:4000
-         },
-
-      }
-   ]
-};
-  
-zingchart.render({ 
-    id : 'sentimentGraph', 
-    data : options,
-    height: 350
-});
 
 /* Data update */
 function setCategory(raw) {
@@ -214,6 +137,10 @@ function setIcon(currency) {
    else icon = "images/eos.svg";
 }
 
+function setTime(date) {
+   time = moment(date).fromNow();
+}
+
 function round(data) {
    return parseFloat(data).toFixed(4);
 }
@@ -229,12 +156,16 @@ function updateCategory() {
    indicatorElement.css("background-color", colour);
 }
 function updateSentiment() { 
-   sentimentScoreElement.text(round(sentimentRaw));
+   sentimentScoreElement.text(round(raw.sentiment));
    sentimentScoreElement.css("color", colour);
 }
+function updateTime() {
+   timeElement.text(`Last Updated ${time}`);
+}
+
 function updateGraph(cb) {
    var tick = {};
-   tick.plot0 = sentimentRaw;
+   tick.plot0 = raw.sentiment;
    cb(JSON.stringify(tick));
 }
 
@@ -243,12 +174,12 @@ function update(cb) {
 }
 
 /* Sentiment Data */
-function getBTCSentiment() { axios.get('/sentiment/btc').then(res => btcRaw = res.data.sentiment); }
-function getETHSentiment() { axios.get('/sentiment/eth').then(res => ethRaw = res.data.sentiment); }
-function getBCHSentiment() { axios.get('/sentiment/bch').then(res => bchRaw = res.data.sentiment); }
-function getEOSSentiment() { axios.get('/sentiment/eos').then(res => eosRaw = res.data.sentiment); }
-function getLTCSentiment() { axios.get('/sentiment/ltc').then(res => ltcRaw = res.data.sentiment); }
-function getXRPSentiment() { axios.get('/sentiment/xrp').then(res => xrpRaw = res.data.sentiment); }
+function getBTCSentiment() { axios.get('/sentiment/btc').then(res => btcRaw = res.data); }
+function getETHSentiment() { axios.get('/sentiment/eth').then(res => ethRaw = res.data); }
+function getBCHSentiment() { axios.get('/sentiment/bch').then(res => bchRaw = res.data); }
+function getEOSSentiment() { axios.get('/sentiment/eos').then(res => eosRaw = res.data); }
+function getLTCSentiment() { axios.get('/sentiment/ltc').then(res => ltcRaw = res.data); }
+function getXRPSentiment() { axios.get('/sentiment/xrp').then(res => xrpRaw = res.data); }
 
 
 
