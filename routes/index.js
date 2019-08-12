@@ -15,7 +15,7 @@ try { data = require("../data.json"); }
 catch (err) { data = new Object(); }
 
 /* Update Sentiment Data */
-cron.schedule('* */5 * * * *', () => updateData());
+cron.schedule('0 5,10,30,50 * * * *', () => updateData());
 
 /* GET: Home. */
 router.get('/', function(req, res, next) {
