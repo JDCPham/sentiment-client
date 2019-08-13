@@ -13,4 +13,7 @@ body {
   width: 100%;
   margin: auto; }
 
+div[id$="license"] {
+  display: none !important; }
+
 /*# sourceMappingURL=style.css.map */

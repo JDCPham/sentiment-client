@@ -1,7 +1,7 @@
 @media only screen and (min-width: 0px) {
   #currencyMenu {
     margin: auto;
-    margin-top: 50px;
+    margin-top: 30px;
     width: 90%;
     height: 30px;
     border-radius: 5px;
@@ -34,7 +34,132 @@
   #dataContainer {
     width: 90%;
     margin: auto;
-    margin-top: 70px;
+    margin-top: 50px;
+    border-radius: 5px;
+    background-color: #FFF;
+    box-shadow: 0px 5px 14px -5px #444;
+    display: grid;
+    grid-template-rows: 30px auto 30px; }
+    #dataContainer #currency {
+      width: max-content;
+      padding: 6px;
+      display: grid;
+      justify-self: center;
+      justify-items: center;
+      align-items: start;
+      margin-top: -30px;
+      background-color: #FFF;
+      border-radius: 50%; }
+      #dataContainer #currency img {
+        width: 45px; }
+    #dataContainer #meta {
+      display: grid;
+      width: 100%;
+      letter-spacing: 0.5px;
+      z-index: 100;
+      border-radius: 5px; }
+      #dataContainer #meta p {
+        text-align: center;
+        font-family: SanFrancisco-Medium;
+        color: #999;
+        font-size: 12px;
+        justify-self: center;
+        align-self: start;
+        padding: 0;
+        margin: 0; }
+    #dataContainer #data {
+      display: grid;
+      grid-template-rows: auto 260px;
+      width: 100%;
+      letter-spacing: 0.5px; }
+      #dataContainer #data #textData {
+        min-height: 70px;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 40px 1fr;
+        grid-column-gap: 10px;
+        margin-top: 10px;
+        margin-bottom: 20px; }
+        #dataContainer #data #textData #sentimentGraph {
+          width: 80%;
+          display: grid;
+          justify-items: center;
+          align-items: center;
+          overflow: hidden;
+          border-radius: 5px; }
+        #dataContainer #data #textData #indicator {
+          width: 5px;
+          height: 5px;
+          justify-self: center;
+          align-self: center;
+          border-radius: 50%;
+          background-color: #999; }
+        #dataContainer #data #textData #rawSentiment {
+          display: grid;
+          grid-template-rows: auto auto;
+          justify-content: center; }
+          #dataContainer #data #textData #rawSentiment .label {
+            text-align: center;
+            font-family: SanFrancisco-Medium;
+            color: #999;
+            font-size: 12px; }
+          #dataContainer #data #textData #rawSentiment p {
+            text-align: center;
+            font-family: SanFrancisco-Bold;
+            font-size: 16px;
+            color: #999; }
+        #dataContainer #data #textData #sentimentCategory {
+          display: grid;
+          grid-template-rows: auto auto;
+          justify-content: center; }
+          #dataContainer #data #textData #sentimentCategory .label {
+            text-align: center;
+            font-family: SanFrancisco-Medium;
+            color: #999;
+            font-size: 12px; }
+          #dataContainer #data #textData #sentimentCategory p {
+            text-align: center;
+            font-family: SanFrancisco-Bold;
+            font-size: 16px;
+            color: #999; } }
+
+@media only screen and (min-width: 515px) {
+  #currencyMenu {
+    margin: auto;
+    margin-top: 30px;
+    width: 500px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: #FFF;
+    box-shadow: 0px 5px 10px -5px #444;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); }
+    #currencyMenu .currency {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      align-content: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0;
+      margin: 0; }
+      #currencyMenu .currency img {
+        height: 20px;
+        width: 20px; }
+      #currencyMenu .currency:hover {
+        cursor: pointer;
+        background-color: #EEE; }
+        #currencyMenu .currency:hover:first-child {
+          border-top-left-radius: 5px;
+          border-bottom-left-radius: 5px; }
+        #currencyMenu .currency:hover:last-child {
+          border-top-right-radius: 5px;
+          border-bottom-right-radius: 5px;
+          border: none; }
+  #dataContainer {
+    width: 500px;
+    margin: auto;
+    margin-top: 50px;
     border-radius: 5px;
     background-color: #FFF;
     box-shadow: 0px 5px 14px -5px #444;
@@ -47,11 +172,11 @@
       justify-self: center;
       justify-items: center;
       align-items: start;
-      margin-top: -40px;
+      margin-top: -30px;
       background-color: #FFF;
       border-radius: 50%; }
       #dataContainer #currency img {
-        width: 70px; }
+        width: 45px; }
     #dataContainer #meta {
       display: grid;
       grid-template-columns: auto;
@@ -124,11 +249,5 @@
             font-family: SanFrancisco-Bold;
             font-size: 20px;
             color: #999; } }
-
-@media only screen and (min-width: 515px) {
-  #currencyMenu {
-    width: 500px; }
-  #dataContainer {
-    width: 500px; } }
 
 /*# sourceMappingURL=index.css.map */
