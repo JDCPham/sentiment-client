@@ -27,6 +27,12 @@ router.get('/dashboard', function(req, res, next) {
   res.render('dashboard', { title: 'Finatext | Dashboard' });
 });
 
+/* GET: Home. */
+router.get('/login', function(req, res, next) {
+  res.render('login', { title: 'Finatext | Login' });
+});
+
+
 /* GET BTC Sentiment */
 router.get('/sentiment/btc', (req, res, next) => res.json(data.BTC));
 
