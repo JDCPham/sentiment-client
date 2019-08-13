@@ -14,9 +14,6 @@ var data;
 try { data = require("../data.json"); } 
 catch (err) { data = new Object(); }
 
-/* Update Data when Server Boots */
-updateData();
-
 /* Update Sentiment Data */
 cron.schedule('*/10 * * * * *', () => updateData());
 
