@@ -18,7 +18,7 @@ catch (err) { data = new Object(); }
 updateData();
 
 /* Update Sentiment Data */
-cron.schedule('0 6,10,30,50 * * * *', () => updateData());
+cron.schedule('*/10 * * * * *', () => updateData());
 
 /* GET: Home. */
 router.get('/', function(req, res, next) {
@@ -52,6 +52,8 @@ router.get('/sentiment/bch', (req, res, next) => res.json(data.BCH));
 
 /* Function to get latest sentiment data */
 function updateData() {
+
+  console.log("Updating on Server Side");
 
   // Get Sentiment Data via API
   rp(ScoreOptions("btc"))
