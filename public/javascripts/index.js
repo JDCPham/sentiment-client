@@ -18,7 +18,7 @@ var eosRaw = getEOSSentiment();
 /* Elements */
 var iconElement            =  $("#currency > img");
 var categoryElement        =  $("#sentimentCategory > p");
-var fadeElements           =  $("#currency > img, #sentimentCategory > p, #indicator, #rawSentiment > p, #meta > p");
+var fadeElements           =  $("#currency > img, #sentimentCategory > p, #rawSentiment > p, #meta > p");
 var indicatorElement       =  $("#indicator");
 var sentimentScoreElement  =  $("#rawSentiment > p");
 var timeElement            =  $("#meta > p");

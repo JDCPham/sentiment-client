@@ -1,9 +1,9 @@
 /* Module Dependancies */
-var express = require('express');
-var router = express.Router();
-var rp = require("request-promise");
-var cron = require("node-cron");
-var fs = require("fs").promises;
+var express     = require('express');
+var router      = express.Router();
+var rp          = require("request-promise");
+var cron        = require("node-cron");
+var fs          = require("fs").promises;
 
 /* Request Settings */
 var {ScoreOptions} = require('./config.js');
@@ -14,12 +14,20 @@ var data;
 try { data = require("../data.json"); } 
 catch (err) { data = new Object(); }
 
+/* Update Data when Server Boots */
+updateData();
+
 /* Update Sentiment Data */
-cron.schedule('0 5,10,30,50 * * * *', () => updateData());
+cron.schedule('0 6,10,30,50 * * * *', () => updateData());
 
 /* GET: Home. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Finatext | Sentiment' });
+});
+
+/* GET: Home. */
+router.get('/dashboard', function(req, res, next) {
+  res.render('dashboard', { title: 'Finatext | Dashboard' });
 });
 
 /* GET BTC Sentiment */

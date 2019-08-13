@@ -1,0 +1,50 @@
+extends layout
+
+//- Stylesheets
+block stylesheets
+
+  link(rel='stylesheet', href='/stylesheets/dashboard.css')
+
+//- Scripts
+block scripts
+
+  script(src="/javascripts/axios.min.js" defer)
+  script(src="/javascripts/moment.min.js" defer)
+  script(src="/javascripts/dashboard.js" defer)
+
+
+//- Content
+block content
+
+    #cardsContainer
+    
+        #card.btc 
+            img(src="/images/btc.svg")
+            p.sentiment
+            p.category 
+            p.updated 
+        #card.eth 
+            img(src="/images/eth.svg")
+            p.sentiment
+            p.category 
+            p.updated 
+        #card.xrp 
+            img(src="/images/xrp.svg")
+            p.sentiment 
+            p.category
+            p.updated
+        #card.ltc 
+            img(src="/images/ltc.svg")
+            p.sentiment
+            p.category
+            p.updated
+        #card.eos 
+            img(src="/images/eos.svg")
+            p.sentiment
+            p.category
+            p.updated
+        #card.bch 
+            img(src="/images/bch.svg")
+            p.sentiment
+            p.category
+            p.updated
