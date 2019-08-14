@@ -1,10 +1,10 @@
 var options = {
     type:"gauge",
     globals:{
-       fontSize:10
+       fontSize:0
     },
     plotarea:{
-       marginTop:40
+       marginTop:30
     },
     plot:{
        size:'100%',
