@@ -14,6 +14,9 @@ var data;
 try { data = require("../data.json"); } 
 catch (err) { data = new Object(); }
 
+/* Update Data */
+updateData();
+
 /* Update Sentiment Data */
 cron.schedule('0 5,6,10,30,50 * * * *', () => updateData());
 
@@ -60,12 +63,12 @@ function updateData() {
 
   // Get Sentiment Data via API
   rp(ScoreOptions("btc"))
-  .then(res => { data.BTC = JSON.parse(res).body; return rp(ScoreOptions("eth"))})
-  .then(res => { data.ETH = JSON.parse(res).body; return rp(ScoreOptions("xrp"))})
-  .then(res => { data.XRP = JSON.parse(res).body; return rp(ScoreOptions("ltc"))})
-  .then(res => { data.LTC = JSON.parse(res).body; return rp(ScoreOptions("eos"))})
-  .then(res => { data.EOS = JSON.parse(res).body; return rp(ScoreOptions("bch"))})
-  .then(res => { data.BCH = JSON.parse(res).body })
+  .then(res => { data.BTC = JSON.parse(res)[0]; return rp(ScoreOptions("eth"))})
+  .then(res => { data.ETH = JSON.parse(res)[0]; return rp(ScoreOptions("xrp"))})
+  .then(res => { data.XRP = JSON.parse(res)[0]; return rp(ScoreOptions("ltc"))})
+  .then(res => { data.LTC = JSON.parse(res)[0]; return rp(ScoreOptions("eos"))})
+  .then(res => { data.EOS = JSON.parse(res)[0]; return rp(ScoreOptions("bch"))})
+  .then(res => { data.BCH = JSON.parse(res)[0] })
 
   // Write Results to data.json
   .then(res => { fs.writeFile('./data.json', JSON.stringify(data, null, 2))})
