@@ -4,6 +4,7 @@ var router      = express.Router();
 var rp          = require("request-promise");
 var cron        = require("node-cron");
 var fs          = require("fs").promises;
+var markdown    = require('markdown-it')();
 
 /* Request Settings */
 var {ScoreOptions} = require('./config.js');
@@ -35,6 +36,15 @@ router.get('/login', function(req, res, next) {
   res.render('login', { title: 'Finatext | Login' });
 });
 
+/* GET: Documentation */
+router.get('/documentation', function(req, res, next) {
+
+  fs.readFile("readMe.md", "utf-8").then(res2 => {
+    console.log(res2)
+    res.render('documentation', { a: markdown.render(res2) });
+  }).catch(e => console.log(e));
+
+});
 
 /* GET BTC Sentiment */
 router.get('/sentiment/btc', (req, res, next) => res.json(data.BTC));

@@ -1,3 +1,4 @@
+
 var options = {
     type:"gauge",
     globals:{

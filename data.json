@@ -1,44 +1,44 @@
 {
   "BTC": {
     "asset": "btc",
-    "date": "2019-08-14T11:00:00+00:00",
-    "epoch": 1565780400,
-    "sentiment": 0.3923177031161239,
-    "category": "Positive"
+    "date": "2019-08-15T13:00:00+00:00",
+    "epoch": 1565874000,
+    "sentiment": -0.24170061101549692,
+    "category": "Negative"
   },
   "ETH": {
     "asset": "eth",
-    "date": "2019-08-14T11:00:00+00:00",
-    "epoch": 1565780400,
-    "sentiment": -0.08201483374379981,
-    "category": "Neutral"
+    "date": "2019-08-15T13:00:00+00:00",
+    "epoch": 1565874000,
+    "sentiment": -0.4548480101893672,
+    "category": "Negative"
   },
   "XRP": {
     "asset": "xrp",
-    "date": "2019-08-14T11:00:00+00:00",
-    "epoch": 1565780400,
-    "sentiment": 0.11802577188461538,
-    "category": "Neutral"
+    "date": "2019-08-15T13:00:00+00:00",
+    "epoch": 1565874000,
+    "sentiment": -0.40843402068435025,
+    "category": "Negative"
   },
   "LTC": {
     "asset": "ltc",
-    "date": "2019-08-14T11:00:00+00:00",
-    "epoch": 1565780400,
-    "sentiment": -0.06337751710954068,
+    "date": "2019-08-15T13:00:00+00:00",
+    "epoch": 1565874000,
+    "sentiment": -0.06562727984822267,
     "category": "Neutral"
   },
   "EOS": {
     "asset": "eos",
-    "date": "2019-08-14T11:00:00+00:00",
-    "epoch": 1565780400,
-    "sentiment": -0.16285929185699255,
+    "date": "2019-08-15T13:00:00+00:00",
+    "epoch": 1565874000,
+    "sentiment": -0.08567875704559919,
     "category": "Neutral"
   },
   "BCH": {
     "asset": "bch",
-    "date": "2019-08-14T11:00:00+00:00",
-    "epoch": 1565780400,
-    "sentiment": -0.1714908694834424,
-    "category": "Neutral"
+    "date": "2019-08-15T13:00:00+00:00",
+    "epoch": 1565874000,
+    "sentiment": -0.25479937562446886,
+    "category": "Negative"
   }
 }

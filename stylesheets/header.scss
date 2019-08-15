@@ -4,7 +4,7 @@
     box-shadow: 0px 8px 10px -10px #444;
     background-color: #FFF;
     display: grid;
-    grid-template-columns: auto 120px 120px;
+    grid-template-columns: auto max-content max-content max-content;
 
     img {
         width: 100px;

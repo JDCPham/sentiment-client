@@ -21,20 +21,6 @@ var timeElement            =  $("#meta > p");
 /* Document Ready */
 $(document).ready(function() {
 
-   if ($(window).width() <= 515) {
-      zingchart.render({ 
-         id : 'sentimentGraph', 
-         data : options,
-         height: '100%'
-      });
-   } else {
-      zingchart.render({ 
-         id : 'sentimentGraph', 
-         data : options,
-         height: '130%'
-      });
-   }
-
    setInterval(function() {
       indicatorElement.fadeOut(1000);
       indicatorElement.fadeIn(300);
@@ -68,6 +54,25 @@ $(document).ready(function() {
 
    $('.eos').click(function() {
       raw = eosRaw;
+      updateGraphics(callback);
+   });
+
+   axios.get('/sentiment/btc').then(res => {
+      raw = btcRaw;
+      options.series[0].values.push(res.data.sentiment);
+      if ($(window).width() <= 515) {
+         zingchart.render({ 
+            id : 'sentimentGraph', 
+            data : options,
+            height: '100%'
+         });
+      } else {
+         zingchart.render({ 
+            id : 'sentimentGraph', 
+            data : options,
+            height: '130%'
+         });
+      }
       updateGraphics(callback);
    });
 
