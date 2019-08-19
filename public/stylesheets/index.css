@@ -126,7 +126,7 @@
 @media only screen and (min-width: 515px) {
   #currencyMenu {
     margin: auto;
-    margin-top: 30px;
+    margin-top: 50px;
     width: 500px;
     height: 30px;
     border-radius: 5px;
@@ -159,7 +159,7 @@
   #dataContainer {
     width: 500px;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 80px;
     border-radius: 5px;
     background-color: #FFF;
     box-shadow: 0px 5px 14px -5px #444;
@@ -172,11 +172,11 @@
       justify-self: center;
       justify-items: center;
       align-items: start;
-      margin-top: -30px;
+      margin-top: -40px;
       background-color: #FFF;
       border-radius: 50%; }
       #dataContainer #currency img {
-        width: 45px; }
+        width: 65px; }
     #dataContainer #meta {
       display: grid;
       grid-template-columns: auto;
