@@ -7,6 +7,7 @@ var fs          = require("fs").promises;
 var markdown    = require('markdown-it')();
 var linkify     = require('linkifyjs');
 var linkifyH    = require('linkifyjs/html');
+var path        = require('path');
 
 /* Request Settings */
 var {ScoreOptions} = require('./config.js');
@@ -36,6 +37,16 @@ router.get('/dashboard', function(req, res, next) {
 /* GET: Home. */
 router.get('/login', function(req, res, next) {
   res.render('login', { title: 'Finatext | Login' });
+});
+
+/* GET: Home. */
+router.get('/widget', function(req, res, next) {
+  res.sendFile(path.join(__dirname + '/../views/demo.html'));
+});
+
+/* GET: Home. */
+router.get('/widget/:currency', function(req, res, next) {
+  res.render('widget', { currency: req.params.currency });
 });
 
 /* GET: Documentation */

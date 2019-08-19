@@ -1,0 +1,49 @@
+@media only screen and (min-width: 0px) {
+  #cardsContainer {
+    margin: auto;
+    width: 100%;
+    display: grid; }
+  body {
+    margin: 0; }
+  #card {
+    width: 100%;
+    height: 100vh;
+    background-color: #FFF;
+    display: grid;
+    grid-template-rows: 20% 28% 30% auto;
+    justify-content: center;
+    opacity: 1; }
+    #card img {
+      justify-self: center;
+      align-self: center;
+      height: calc(100% - 10%);
+      margin-top: 10%; }
+    #card .category {
+      justify-self: center;
+      align-self: start;
+      font-size: 10vw;
+      font-family: SanFrancisco-Bold;
+      letter-spacing: 1px;
+      margin: 0;
+      padding: 0; }
+    #card .sentiment {
+      justify-self: center;
+      align-self: end;
+      font-size: 5vw;
+      font-family: SanFrancisco-Bold;
+      letter-spacing: 1px;
+      margin: 0;
+      padding: 0; }
+    #card .updated {
+      align-self: end;
+      justify-self: center;
+      text-align: center;
+      font-family: SanFrancisco-Medium;
+      color: #999;
+      font-size: 2vw;
+      padding: 0;
+      margin: 0;
+      margin-bottom: 15px;
+      letter-spacing: 0.5px; } }
+
+/*# sourceMappingURL=widget.css.map */
