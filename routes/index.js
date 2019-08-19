@@ -5,6 +5,8 @@ var rp          = require("request-promise");
 var cron        = require("node-cron");
 var fs          = require("fs").promises;
 var markdown    = require('markdown-it')();
+var linkify     = require('linkifyjs');
+var linkifyH    = require('linkifyjs/html');
 
 /* Request Settings */
 var {ScoreOptions} = require('./config.js');
@@ -39,9 +41,9 @@ router.get('/login', function(req, res, next) {
 /* GET: Documentation */
 router.get('/documentation', function(req, res, next) {
 
-  fs.readFile("readMe.md", "utf-8").then(res2 => {
-    console.log(res2)
-    res.render('documentation', { a: markdown.render(res2) });
+  fs.readFile("readMe.md", "utf-8").then(html => {
+    html = linkifyH(markdown.render(html), {defaultProtocol: 'http'});
+    res.render('documentation', { a: html, title: 'Finatext | Documentation' });
   }).catch(e => console.log(e));
 
 });
