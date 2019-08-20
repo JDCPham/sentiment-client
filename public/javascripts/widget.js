@@ -10,7 +10,6 @@ $(document).ready(function() {
    var currency = $("#card > img").attr("data-curr");
 
    getData(currency, SentimentElement, CategoryElement, UpdatedElement);
-  
 });
 
 function getData(currency, sentimentElement, categoryElement, updatedElement) {
